@@ -1,6 +1,7 @@
 import javax.swing.*;
 import javax.xml.stream.events.Characters;
 
+import java.util.ArrayList;
 import java.util.Stack;
 import java.util.StringTokenizer;
 
@@ -16,10 +17,11 @@ public class Main {
         //definimos la pila en la que almacenaremos los tokens, ya sean datos numericos u operadores
         Stack <String> stack = new Stack<>();
 
+        //contendremos los numeros que vayan saliendo
+        ArrayList<Double> numerosList = new ArrayList<>();
 
         //variables temporales
-        int i = 0;//avanza index de la stack
-        int temp;//guardamos los valores numericos temporalmente
+        double resultado = 0;//guardamos operaciones entre ellos, la iniciamos en X valor pa q no este fregando
         String operacion;//guardamos la operacion temporalmente
 
 
@@ -33,6 +35,86 @@ public class Main {
 
             }
 
+           try{
+
+               //despues de haberlo rellenado vamos a intentar hacer operaciones con estos valores de la stack
+               if(stack.peek().contains("add") || stack.peek().contains("sub") || stack.peek().contains("div") || stack.peek().contains("mul")){
+
+                   operacion = stack.pop();
+
+                   try{
+                       boolean peekEsNumero = true;
+                       while (peekEsNumero){
+                           double token = Double.parseDouble(stack.peek());
+                           numerosList.add(token);
+                           stack.pop();
+
+                           try{
+                               double tokenPrueba = Double.parseDouble(stack.peek());
+
+                           }catch (Exception e){
+                               peekEsNumero = false;
+                               //si truena y llega al catch, eso indica que el token de prueba fallo en el momento
+                               //de parsear, por ende no es un numero y cortamos ahi y > peekEsNumero = false
+                           }
+
+                       }//fin while
+
+                       System.out.println("Array de numeros: "+numerosList);
+                   }catch (Exception e){
+                       System.out.println("vuelva a intentarlo, error en try de parseo de stack.peek a double");
+                   }
+
+
+
+                   switch (operacion){
+
+                       case "add":
+
+                           //IMPORTANTE CAMBIAR LA VARIABLE "resultado" dependiendo de cada operacion
+                           //si es una suma debe estar en cero para que de bien
+                           //si es multiplicacion o division, y esta puesta en 0, vale mother todo
+                           resultado = 0;
+                           for (int i = 0; i < numerosList.size(); i++) {
+
+                              resultado += numerosList.get(i);
+
+                           }//fin for
+
+                           break;
+
+                       case "sub":
+
+                           //resultado =    ;
+
+                           break;
+
+                       case "mul":
+                            resultado = 1;
+                           for (int i = 0; i < numerosList.size(); i++) {
+
+                               resultado *= numerosList.get(i);
+
+                           }
+
+                           break;
+
+                       case "div":
+
+                           //resultado =     ;
+
+                           break;
+
+                   }//fin switch
+
+                   System.out.println("respuesta: "+resultado);
+
+               }//fin if
+
+
+           }catch (Exception e){
+               System.out.println("Intentelo de nuevo, porfavor.");
+           }
 
 
 
