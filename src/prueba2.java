@@ -47,7 +47,7 @@ public class prueba2 {
                 stack.push(valor);
             }
         }
-        System.out.println(resultado);
+        System.out.println("El resultado es: "+resultado);
     }
 
     private static boolean esOperador(String token) {
