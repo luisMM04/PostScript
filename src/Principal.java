@@ -84,7 +84,12 @@ public class Principal {
 
                        case "sub":
 
-                           //resultado =    ;
+                           resultado = 0   ;
+                           for (int i = 0; i < numerosList.size(); i++) {
+
+                               resultado =  numerosList.get(i)  - resultado;
+
+                           }
 
                            break;
 
@@ -100,8 +105,12 @@ public class Principal {
 
                        case "div":
 
-                           //resultado =     ;
+                           resultado = 1   ;
+                           for (int i = 0; i < numerosList.size(); i++) {
 
+                               resultado = numerosList.get(i) / resultado;
+
+                           }
                            break;
 
                    }//fin switch
