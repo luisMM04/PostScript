@@ -1,11 +1,10 @@
 import javax.swing.*;
-import javax.xml.stream.events.Characters;
 
 import java.util.ArrayList;
 import java.util.Stack;
 import java.util.StringTokenizer;
 
-public class Main {
+public class Principal {
     public static void main(String[] args) {
 
         //pedimos expresion a usuario
@@ -107,7 +106,8 @@ public class Main {
 
                    }//fin switch
 
-                   System.out.println("respuesta: "+resultado);
+                   //pusheamos el resultado a la stack para que se siga trabajando con el
+                    stack.push(String.valueOf(resultado));
 
                }//fin if
 
@@ -116,7 +116,7 @@ public class Main {
                System.out.println("Intentelo de nuevo, porfavor.");
            }
 
-
+        System.out.println("respuesta: "+resultado);
 
     }//fin main
 
