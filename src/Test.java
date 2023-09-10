@@ -17,11 +17,12 @@ public class Test {
         while (tokenizer.hasMoreTokens()) {
             String token = tokenizer.nextToken();
 
+
             // Check if the token is an operator or a number
             if (isOperator(token)) {
                 // Handle operator
-                double operand2 = Double.parseDouble(stack.pop());
-                double operand1 = Double.parseDouble(stack.pop());
+                double operand2 = Double.valueOf(stack.pop());
+                double operand1 = Double.valueOf(stack.pop());
 
                 double result = performOperation(token, operand1, operand2);
                 stack.push(Double.toString(result));

@@ -128,5 +128,8 @@ public class Principal {
         System.out.println("respuesta: "+resultado);
 
     }//fin main
+    private static boolean esOperador(String token) {
+        return token.equals("add") || token.equals("sub") || token.equals("mul") || token.equals("div");
+    }
 
 }//fin class
